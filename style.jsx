@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
       margin: 20,
       backgroundColor: '#89CFF0',
       alignItems: 'center',
-      justifyContent: 'center', 
+      justifyContent: 'center',
+      width: 300,
+      maxWidth: 500,
     },
     cardText: {
       color: '#fff',
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
     },
     input: {
       height: 40,
+      width: 280,
       backgroundColor: '#fff',
       borderColor: 'gray',
       borderWidth: 1,
@@ -37,6 +40,14 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       padding: 10,
     },
+    linkText: {
+      color: 'blue',
+      marginTop: 15,
+      textAlign: 'center',
+    },
+    logo: {
+      marginTop: 50,
+    }
   });
 
   export default styles;

@@ -1,12 +1,13 @@
 import { View } from 'react-native';
-import Auth from './Auth';
 import React from 'react';
 import styles from '../style.jsx';
 
-export default function App() {
+export default function Card({ children }) {
   return (
-    <View style={styles.card}>
-        <Auth />
-    </View>
+    <View style={styles.container}>
+      <View style={styles.card}>
+          {children}
+      </View>
+    </View >
   );
 }
