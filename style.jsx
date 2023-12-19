@@ -9,24 +9,12 @@ const styles = StyleSheet.create({
     },
     title: {
       color: '#000',
-      fontFamily: 'Arial',
       fontSize: 20,
       fontWeight: 'bold',
 
     },
-    card: {
-      padding: 20,
-      borderRadius: 10,
-      margin: 20,
-      backgroundColor: '#89CFF0',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 300,
-      maxWidth: 500,
-    },
     cardText: {
       color: '#fff',
-      fontFamily: 'Arial',
       fontSize: 20,
     },
     input: {
@@ -43,11 +31,45 @@ const styles = StyleSheet.create({
     linkText: {
       color: 'blue',
       marginTop: 15,
+      marginBottom: 15,
       textAlign: 'center',
+      fontSize: 15,
     },
     logo: {
       marginTop: 50,
-    }
+      marginBottom: 10,
+    },
+    modalContainer: {
+      flex: 1,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        padding: 20,
+        borderRadius: 10,
+    },
+    modalTitle: {
+        fontWeight: 'bold',
+        color: 'green',
+        fontSize: 30,
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    buttonTitle: {
+      marginTop: 10,
+      backgroundColor: 'green',
+      fontSize: 20,
+      borderRadius: 5,
+    },
+
+    buttonText: {
+      color: 'white',
+      fontSize: 20,
+      textAlign: 'center',
+    }    
+
   });
 
   export default styles;

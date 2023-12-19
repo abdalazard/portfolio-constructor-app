@@ -1,17 +1,18 @@
-import { Text, View, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TextInput, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import React from 'react';
 import styles from '../style';
-import Card from './Card';
+import Card from './Components/Card';
 
-//Requer métodos para autenticar usuário
 
 export default function Auth({ navigation }) {
+    //Requer métodos para autenticar usuário
+
     return (
         <View style={styles.container}>
             <Image 
                 style={{...styles.logo, width: 220, height: 220}}
                 source={require('../assets/logo.png')} />
-            <Card>
+            <Card estilo={estilo.card}>
                 <Text style={styles.cardText}>E-mail</Text>
                 <TextInput style={styles.input} />
                 <Text style={styles.cardText}>Password</Text>
@@ -25,3 +26,15 @@ export default function Auth({ navigation }) {
                  
     );
 }
+
+const estilo = StyleSheet.create({
+    card: {
+        padding: 20,
+        borderRadius: 10,
+        backgroundColor: '#89CFF0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 280,
+        maxWidth: 500,
+      },
+  });
