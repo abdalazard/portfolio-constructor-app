@@ -1,5 +1,5 @@
-import { Text, View, TextInput, Button, TouchableOpacity, Image, KeyboardAvoidingView, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { Text, View, TextInput, Button, TouchableOpacity, Image, KeyboardAvoidingView, StyleSheet, BackHandler } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import styles from '../style.jsx';
 import Card from './Components/Card';
 import { getApiUrl } from './utils/api.js';
@@ -16,6 +16,42 @@ export default function CreateUser({ navigation }) {
     const [redirectOnClose, setRedirectOnClose] = useState(false);
     const [requestSuccess, setRequestSuccess] = useState(false);
     const [messageError, setMessageError] = useState('');
+
+    const isNameFocused = focusedField === 'name';
+    const isEmailFocused = focusedField === 'email';
+    const isPasswordFocused = focusedField === 'password';
+    const isConfirmPasswordFocused = focusedField === 'confirmPassword';
+
+    const [anyFieldFocused, setAnyFieldFocused] = useState(false);
+    const [focusedField, setFocusedField] = useState(null);
+    
+    const handleFocus = (field) => {
+        setFocusedField(field);
+        setAnyFieldFocused(true);
+    };
+    
+    const handleBlur = (field) => {
+        if (field === focusedField) {
+            setAnyFieldFocused(false);
+        }
+    };
+    
+    useEffect(() => {
+        const backAction = () => {
+            if (anyFieldFocused) {
+                handleBlur(focusedField);
+                return true;
+            }
+            return false;
+        };
+    
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+    
+        return () => backHandler.remove();
+    }, [anyFieldFocused, focusedField]);
 
     const handleModalClose = () => {
         setModalVisible(false);
@@ -114,8 +150,9 @@ export default function CreateUser({ navigation }) {
     return (
         <View style={styles.container}>
             <Image 
-                style={{...styles.logo, width: 220, height: 220}}
-                source={require('../assets/logo.png')} />
+                style={{...styles.logo, width: anyFieldFocused ? 0 : 220, height: anyFieldFocused ? 0 : 220, opacity: anyFieldFocused ? 0 : 1}}
+                source={require('../assets/logo.png')} 
+            />
             <Text style={estilo.messageError}>{messageError}</Text>
             <KeyboardAvoidingView 
                 behavior={Platform.OS === "ios" ? "padding" : "height"} 
@@ -123,13 +160,13 @@ export default function CreateUser({ navigation }) {
                 keyboardVerticalOffset={50}>
                 <Card estilo={estilo.card}>
                     <Text style={styles.cardText}>Username</Text>
-                    <TextInput style={styles.input} onChangeText={setName} value={name}/>
+                    <TextInput onFocus={() => handleFocus('name')} onBlur={() => handleBlur('name')} style={[styles.input, {borderColor: isNameFocused ? 'blue' : 'gray'}]} onChangeText={setName} value={name}/>
                     <Text style={styles.cardText}>E-mail</Text>
-                    <TextInput style={styles.input} onChangeText={setEmail} value={email}/>
+                    <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                     <Text style={styles.cardText}>Password</Text>
-                    <TextInput style={styles.input} secureTextEntry={true} onChangeText={setPassword} value={password} />
+                    <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
                     <Text style={styles.cardText}>Password confirmation</Text>
-                    <TextInput style={styles.input} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
+                    <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                     <Button title="Register" onPress={register} />
                     <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
                         <Text style={styles.linkText}>Log In</Text>
@@ -145,14 +182,14 @@ export default function CreateUser({ navigation }) {
 
 const estilo = StyleSheet.create({
 card: {
-    padding: 20,
+    padding: 30,
     borderRadius: 10,
     backgroundColor: '#89CFF0',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 430,
+    height: 450,
     maxWidth: 500,
-    marginBottom: 20,
+    marginBottom: 50,
     },
 modalText: {
     fontSize: 20,
