@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       padding: 10,
     },
     linkText: {
-      color: 'blue',
+      color: '#0000ff',
       marginTop: 15,
       marginBottom: 15,
       textAlign: 'center',

@@ -18,7 +18,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
 
     const [anyFieldFocused, setAnyFieldFocused] = useState(false);
     const [focusedField, setFocusedField] = useState(null);
-    
+
     const handleFocus = (field) => {
         setFocusedField(field);
         setAnyFieldFocused(true);
@@ -31,7 +31,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     };
     
     const login = () => {
-        fetch(getApiUrl('login'), {
+        fetch(getApiUrl("login"), { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,6 @@ export default function Auth({ setIsAuthenticated, navigation }) {
             setModalMessage('Sua requisição deu erro!');
             setModalVisible(true);
             setModalText('Um erro na requisição impediu seu acesso! \n :(');
-
         });
     };
 
