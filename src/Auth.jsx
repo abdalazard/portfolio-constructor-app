@@ -91,7 +91,7 @@ export default function Auth({ setIsAuthenticated, navigation }) {
     return (
         <View style={styles.container}>
             <Image 
-                style={{...styles.logo, width: anyFieldFocused ? 0 : 220, height: anyFieldFocused ? 0 : 220, opacity: anyFieldFocused ? 0 : 1}}
+                style={{...styles.logo, width: anyFieldFocused ? 0 : 400, height: anyFieldFocused ? 0 : 150, opacity: anyFieldFocused ? 0 : 1}}
                 source={require('../assets/logo.png')} 
             />
             <Card estilo={estilo.card}>
@@ -100,11 +100,11 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                 <Text style={styles.cardText}>Password</Text>
                 <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
                 <Button title="Log In" onPress={login} />
-                <TouchableOpacity onPress={() => navigation.navigate('CreateUser')}>
-                    <Text style={styles.linkText}>Create User</Text>
-                </TouchableOpacity>
+                
             </Card>
-
+            <TouchableOpacity onPress={() => navigation.navigate('CreateUser')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
+                <Text style={estilo.linkText}>Create NewUser</Text>
+            </TouchableOpacity>
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
             </Modal>
@@ -116,7 +116,7 @@ const estilo = StyleSheet.create({
     card: {
         padding: 20,
         borderRadius: 10,
-        backgroundColor: '#89CFF0',
+        backgroundColor: '#57894E',
         alignItems: 'center',
         justifyContent: 'center',
         height: 280,
@@ -159,4 +159,10 @@ const estilo = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 60,
     },
+    linkText: {
+        color: '#0000ff',
+        marginBottom: 100,
+        textAlign: 'center',
+        fontSize: 15,
+      },
 });

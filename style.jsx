@@ -30,14 +30,12 @@ const styles = StyleSheet.create({
     },
     linkText: {
       color: '#0000ff',
-      marginTop: 15,
-      marginBottom: 15,
+      marginBottom: 55,
       textAlign: 'center',
       fontSize: 15,
     },
     logo: {
-      marginTop: 50,
-      marginBottom: 10,
+      marginTop: 100,
     },
     modalContainer: {
       flex: 1,

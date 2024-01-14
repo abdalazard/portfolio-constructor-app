@@ -61,7 +61,7 @@ export default function CreateUser({ navigation }) {
     };
 
     const register = () => {
-        fetch(getApiUrl('register'), {
+        fetch(getApiUrl("register"), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ export default function CreateUser({ navigation }) {
     return (
         <View style={styles.container}>
             <Image 
-                style={{...styles.logo, width: anyFieldFocused ? 0 : 220, height: anyFieldFocused ? 0 : 220, opacity: anyFieldFocused ? 0 : 1}}
+                style={{...styles.logo, width: anyFieldFocused ? 0 : 400, height: anyFieldFocused ? 0 : 150, opacity: anyFieldFocused ? 0 : 1}}
                 source={require('../assets/logo.png')} 
             />
             <Text style={estilo.messageError}>{messageError}</Text>
@@ -168,14 +168,14 @@ export default function CreateUser({ navigation }) {
                     <Text style={styles.cardText}>Password confirmation</Text>
                     <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                     <Button title="Register" onPress={register} />
-                    <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
-                        <Text style={styles.linkText}>Log In</Text>
-                    </TouchableOpacity>
                 </Card>
             </KeyboardAvoidingView>
+            <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
+                <Text style={estilo.linkText}>Log In</Text>
+            </TouchableOpacity>
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
-            </Modal>
+            </Modal>            
         </View>
     );
 }    
@@ -184,12 +184,12 @@ const estilo = StyleSheet.create({
 card: {
     padding: 30,
     borderRadius: 10,
-    backgroundColor: '#89CFF0',
+    backgroundColor: '#57894E',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 450,
+    height: 420,
     maxWidth: 500,
-    marginBottom: 50,
+    marginTop: 30
     },
 modalText: {
     fontSize: 20,
@@ -228,5 +228,10 @@ messageError: {
     textAlign: 'center',
     marginBottom: 60,
 },
+linkText: {
+    color: '#0000ff',
+    textAlign: 'center',
+    fontSize: 15,
+  },
     
 });
