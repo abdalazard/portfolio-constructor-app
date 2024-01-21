@@ -168,12 +168,12 @@ export default function CreateUser({ navigation }) {
                     <Text style={styles.cardText}>Password confirmation</Text>
                     <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
                     <TouchableOpacity style={estilo.submit} onPress={register} >
-                <Text >Register</Text>
-            </TouchableOpacity>
+                        <Text style={estilo.buttonTitle}>Register</Text>
+                    </TouchableOpacity>
                 </Card>
             </KeyboardAvoidingView>
-            <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
-                <Text style={estilo.linkText}>Log In</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={[{ opacity: anyFieldFocused ? 0 : 1 }, estilo.submitSecondary]} >
+                <Text style={estilo.buttonTitleSecondary}>Log In</Text>
             </TouchableOpacity>
             <Modal modalTitle={requestSuccess ? estilo.modalTitle : estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={requestSuccess ? "Fazer login." : "Tentar cadastro."} buttonTitleStyle={requestSuccess ? estilo.buttonTitle : estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
@@ -199,8 +199,6 @@ modalText: {
     marginBottom: 20,
     },
 buttonTitle: {
-    marginTop: 10,
-    backgroundColor: 'green',
     fontSize: 20,
     borderRadius: 5,
     },
@@ -245,6 +243,21 @@ linkText: {
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
+  submitSecondary: {
+    marginTop: 50,
+    backgroundColor: 'black',
+    borderRadius: 5,
+    width: 90,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonTitleSecondary: {
+    fontSize: 15,
+    color: 'white',
+    alignSelf: 'center',
+    textAlign: 'center',
+},
     
 });

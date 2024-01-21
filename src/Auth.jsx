@@ -104,8 +104,8 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                 </TouchableOpacity>
 
             </Card>
-            <TouchableOpacity onPress={() => navigation.navigate('CreateUser')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
-                <Text style={estilo.linkText}>Create NewUser</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('CreateUser')} style={[{ opacity: anyFieldFocused ? 0 : 1 }, estilo.submitSecondary]} >
+                    <Text style={estilo.buttonTitleSecondary}>Create NewUser</Text>
             </TouchableOpacity>
             <Modal modalTitle={estilo.modalTitleError} visible={modalVisible} onClose={() => handleModalClose()} title={modalMessage} buttonTitle={"Me cadastrar"} buttonTitleStyle={estilo.buttonTitleError}>
                 <Text style={estilo.modalText}>{modalText}</Text>
@@ -157,12 +157,6 @@ const estilo = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 60,
     },
-    linkText: {
-        color: '#0000ff',
-        marginBottom: 100,
-        textAlign: 'center',
-        fontSize: 15,
-      },
       submit: {
         marginTop: 10,
         backgroundColor: 'white',
@@ -172,5 +166,21 @@ const estilo = StyleSheet.create({
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
-      }
+      },
+      submitSecondary: {
+        marginBottom: 50,
+        backgroundColor: 'black',
+        fontSize: 20,
+        borderRadius: 5,
+        width: 140,
+        height: 60,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      buttonTitleSecondary: {
+        fontSize: 20,
+        color: 'white',
+        alignSelf: 'center',
+        textAlign: 'center',
+    },
 });
