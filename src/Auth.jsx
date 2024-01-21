@@ -99,8 +99,10 @@ export default function Auth({ setIsAuthenticated, navigation }) {
                 <TextInput onFocus={() => handleFocus('email')} onBlur={() => handleBlur('email')} style={[styles.input, {borderColor: isEmailFocused ? 'blue' : 'gray'}]} onChangeText={setEmail} value={email}/>
                 <Text style={styles.cardText}>Password</Text>
                 <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} onChangeText={setPassword} value={password} secureTextEntry={true} />
-                <Button title="Log In" onPress={login} />
-                
+                <TouchableOpacity  style={estilo.submit} onPress={login} >
+                    <Text style={estilo.buttonTitle}>Log In</Text>
+                </TouchableOpacity>
+
             </Card>
             <TouchableOpacity onPress={() => navigation.navigate('CreateUser')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
                 <Text style={estilo.linkText}>Create NewUser</Text>
@@ -116,7 +118,7 @@ const estilo = StyleSheet.create({
     card: {
         padding: 20,
         borderRadius: 10,
-        backgroundColor: '#57894E',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
         height: 280,
@@ -128,14 +130,10 @@ const estilo = StyleSheet.create({
         marginBottom: 20,
     },
     buttonTitle: {
-        marginTop: 10,
-        backgroundColor: 'green',
         fontSize: 20,
-        borderRadius: 5,
     },
     buttonTitleError: {
         marginTop: 10,
-        backgroundColor: 'green',
         fontSize: 20,
         borderRadius: 5,
     },
@@ -165,4 +163,14 @@ const estilo = StyleSheet.create({
         textAlign: 'center',
         fontSize: 15,
       },
+      submit: {
+        marginTop: 10,
+        backgroundColor: 'white',
+        fontSize: 20,
+        borderRadius: 5,
+        width: 100,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
 });

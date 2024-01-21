@@ -167,7 +167,9 @@ export default function CreateUser({ navigation }) {
                     <TextInput onFocus={() => handleFocus('password')} onBlur={() => handleBlur('password')} style={[styles.input, {borderColor: isPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setPassword} value={password} />
                     <Text style={styles.cardText}>Password confirmation</Text>
                     <TextInput onFocus={() => handleFocus('confirmPassword')} onBlur={() => handleBlur('confirmPassword')} style={[styles.input, {borderColor: isConfirmPasswordFocused ? 'blue' : 'gray'}]} secureTextEntry={true} onChangeText={setConfirmPassword} value={confirmPassword}/>
-                    <Button title="Register" onPress={register} />
+                    <TouchableOpacity style={estilo.submit} onPress={register} >
+                <Text >Register</Text>
+            </TouchableOpacity>
                 </Card>
             </KeyboardAvoidingView>
             <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={{ opacity: anyFieldFocused ? 0 : 1}}>
@@ -184,7 +186,7 @@ const estilo = StyleSheet.create({
 card: {
     padding: 30,
     borderRadius: 10,
-    backgroundColor: '#57894E',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
     height: 420,
@@ -230,8 +232,19 @@ messageError: {
 },
 linkText: {
     color: '#0000ff',
+    marginTop: 100,
     textAlign: 'center',
     fontSize: 15,
   },
+  submit: {
+    marginTop: 10,
+    backgroundColor: 'white',
+    fontSize: 20,
+    borderRadius: 5,
+    width: 100,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
     
 });
